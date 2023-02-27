@@ -2,13 +2,13 @@
 A Decidim module to connect with Goteo as an OAuth provider
 
 ## Generating keys
-In order to install it you will need to obtain the Goteo Oauth client id. You can do that by running on the oauth server, or ask your instance owner to register the Application: 
+In order to install it you will need to obtain the Goteo Oauth client id. You can do that by running on the oauth server, or ask your instance owner to register the Application:
 
 ```bash 
 bin/console league:oauth2-server:create-client "Decidim installation" --grant-type authorization_code --redirect-uri http://your.decidim.installation.tld/users/auth/goteo/callback  --allow-plain-text-pkce
 ```
 
-Addtionally, for develpment, you may need to specify the port. Assuming the decidim instance is running on `http://localhost:3000`, then you will need to run the following command. 
+Addtionally, for develpment, you may need to specify the port. Assuming the decidim instance is running on `http://localhost:3000`, then you will need to run the following command.
 
 ```bash
 bin/console league:oauth2-server:create-client "Decidim installation" --grant-type authorization_code --redirect-uri http://localhost:3000/users/auth/goteo/callback  --allow-plain-text-pkce
@@ -23,7 +23,7 @@ Then add to your Gemfile the following line:
 gem "decidim-goteo_oauth", "~> 0.0.1"
 ```
 
-After that, run in your bash console: 
+After that, run in your bash console:
 
 ```bash
 bundle install  
@@ -46,7 +46,7 @@ development:
 ```
 
 ### Addtional configuration
-You can further customise the installation by providing 2 additional key settings, that you could add to your `config/initializers/decidim.rb` or 
+You can further customise the installation by providing 2 additional key settings, that you could add to your `config/initializers/decidim.rb` or
 `config/initializers/omniauth.rb`
 
 ```ruby
@@ -67,9 +67,9 @@ After you make all the required configuration, you will need to restart Decidim 
 After the restart, you will need to open your system admin panel, edit organization, click "Show advanced settings"
 ![image](./screenshots/organization-settings.png)
 
-After you save the application you could visit the organization login page, 
+After you save the application you could visit the organization login page,
 ![image](./screenshots/login-screen.png)
 
-Clicking on the "Sign in with Goteo" will lead you to application authorization path, and afterwards to Decidim installation to either registration screen if there is no account available, or to previously visited page being already authenticated. 
+Clicking on the "Sign in with Goteo" will lead you to application authorization path, and afterwards to Decidim installation to either registration screen if there is no account available, or to previously visited page being already authenticated.
 ## Todo
 Refactor the initialization setup, in order to add more granularity on the client_options
