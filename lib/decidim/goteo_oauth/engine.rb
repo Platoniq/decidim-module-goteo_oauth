@@ -4,7 +4,6 @@ module Decidim
   module GoteoOauth
     class Engine < ::Rails::Engine
       isolate_namespace Decidim::GoteoOauth
-
     end
   end
 end
