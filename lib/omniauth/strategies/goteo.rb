@@ -12,8 +12,8 @@ module OmniAuth
         response_type: "authorization_code"
       }
 
-      option :token_params, { foo: :bar }
-      option :auth_token_params, { fiz: :baz }
+      option :token_params, {}
+      option :auth_token_params, {}
       option :token_options, [:client_id]
       option :pkce, true
 
@@ -44,16 +44,20 @@ module OmniAuth
       end
 
       def build_access_token
-        verifier = request.params["code"]
-
-        opts = deep_symbolize(options.client_options)
-        opts[:token_url] = "#{opts[:token_url]}?client_id=#{options.client_id}&response_type=code"
-
-        ::OAuth2::Client.new(options.client_id, options.client_secret, opts)
-                        .auth_code
+        ::OAuth2::Client.new(options.client_id, options.client_secret, opts).auth_code
                         .get_token(verifier,
                                    { redirect_uri: (full_host + callback_path) }.merge(token_params.to_hash(symbolize_keys: true)),
                                    deep_symbolize(options.auth_token_params))
+      end
+
+      def verifier
+        request.params["code"]
+      end
+
+      def opts
+        local_opts = deep_symbolize(options.client_options)
+        local_opts[:token_url] = "#{local_opts[:token_url]}?client_id=#{options.client_id}&response_type=code"
+        local_opts
       end
     end
   end
