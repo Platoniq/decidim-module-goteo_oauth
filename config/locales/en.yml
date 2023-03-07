@@ -1,0 +1,9 @@
+---
+en:
+  decidim:
+    system:
+      organizations:
+        omniauth_settings:
+          goteo:
+            app_id: Application Id
+            app_secret: Application Secret
