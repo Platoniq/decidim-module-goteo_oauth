@@ -50,6 +50,10 @@ module OmniAuth
                                    deep_symbolize(options.auth_token_params))
       end
 
+      def callback_url
+        full_host + callback_path
+      end
+
       def verifier
         request.params["code"]
       end
