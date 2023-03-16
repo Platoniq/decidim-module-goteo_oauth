@@ -50,6 +50,11 @@ module OmniAuth
                                    deep_symbolize(options.auth_token_params))
       end
 
+      def client
+        options.client_options["authorize_url"] = options.client_options["authorize_url"].gsub("/:locale", "/#{I18n.locale}")
+        ::OAuth2::Client.new(options.client_id, options.client_secret, deep_symbolize(options.client_options))
+      end
+
       def callback_url
         full_host + callback_path
       end
