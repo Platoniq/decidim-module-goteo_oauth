@@ -6,7 +6,7 @@ module OmniAuth
       option :name, "goteo"
       option :client_options, {
         site: "https://oauth-live.deploy.goteo.org/",
-        authorize_url: "https://oauth-live.deploy.goteo.org/authorize",
+        authorize_url: "https://oauth-live.deploy.goteo.org/:locale/authorize",
         user_info_url: "https://oauth-live.deploy.goteo.org/userInfo",
         token_url: "https://oauth-live.deploy.goteo.org/token",
         response_type: "authorization_code"

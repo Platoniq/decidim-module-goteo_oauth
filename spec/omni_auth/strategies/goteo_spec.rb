@@ -50,7 +50,7 @@ describe OmniAuth::Strategies::Goteo do
     end
 
     it "has correct authorize url" do
-      expect(subject.options.client_options.authorize_url).to eq("https://oauth-live.deploy.goteo.org/authorize")
+      expect(subject.options.client_options.authorize_url).to eq("https://oauth-live.deploy.goteo.org/:locale/authorize")
     end
 
     it "has correct user info url" do

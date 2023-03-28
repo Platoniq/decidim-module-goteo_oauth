@@ -54,9 +54,9 @@ if defined?(Decidim::GoteoOauth)
   Decidim::GoteoOauth.oauth_scope = :TEST
   Decidim::GoteoOauth.oauth_client_options = {
     site: "http://Your.custom.tld/",
-    authorize_url: '/authorize',
-    user_info_url: '/userInfo',
-    token_url: "/token",
+    authorize_url: 'http://Your.custom.tld/:locale/authorize',
+    user_info_url: 'http://Your.custom.tld/userInfo',
+    token_url: "http://Your.custom.tld/token",
     response_type: 'authorization_code'
   }
 end 
