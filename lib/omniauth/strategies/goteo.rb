@@ -51,7 +51,8 @@ module OmniAuth
       end
 
       def client
-        options.client_options["authorize_url"] = options.client_options["authorize_url"].gsub("/:locale", "/#{I18n.locale}")
+        locale = request.params["locale"] || I18n.locale
+        options.client_options["authorize_url"] = options.client_options["authorize_url"].gsub("/:locale", "/#{locale}")
         ::OAuth2::Client.new(options.client_id, options.client_secret, deep_symbolize(options.client_options))
       end
 
