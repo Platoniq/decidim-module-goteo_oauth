@@ -8,7 +8,7 @@ module Decidim
     include ActiveSupport::Configurable
 
     config_accessor :oauth_scope do
-      :TEST
+      :email
     end
 
     config_accessor :oauth_client_options do
@@ -16,7 +16,7 @@ module Decidim
         site: "https://oauth-live.deploy.goteo.org/",
         authorize_url: "https://oauth-live.deploy.goteo.org/:locale/authorize",
         user_info_url: "https://oauth-live.deploy.goteo.org/userInfo",
-        token_url: "https://oauth-live.deploy.goteo.org/token",
+        token_url: "https://oauth-live.deploy.goteo.org/:locale/token",
         response_type: "authorization_code"
       }
     end

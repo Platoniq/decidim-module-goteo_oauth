@@ -51,12 +51,12 @@ You can further customise the installation by providing 2 additional key setting
 
 ```ruby
 if defined?(Decidim::GoteoOauth)
-  Decidim::GoteoOauth.oauth_scope = :TEST
+  Decidim::GoteoOauth.oauth_scope = :email
   Decidim::GoteoOauth.oauth_client_options = {
     site: "http://Your.custom.tld/",
     authorize_url: 'http://Your.custom.tld/:locale/authorize',
     user_info_url: 'http://Your.custom.tld/userInfo',
-    token_url: "http://Your.custom.tld/token",
+    token_url: "http://Your.custom.tld/:locale/token",
     response_type: 'authorization_code'
   }
 end 
