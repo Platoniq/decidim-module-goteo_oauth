@@ -11,11 +11,11 @@ env:
 
 jobs:
   test-report:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     services:
       postgres:
-        image: postgres:11
+        image: postgres:14
         ports: ["5432:5432"]
         options: >-
           --health-cmd pg_isready
@@ -30,9 +30,7 @@ jobs:
       DATABASE_HOST: localhost
 
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
+      - uses: actions/checkout@v4
 
       - uses: ruby/setup-ruby@v1
         with:
