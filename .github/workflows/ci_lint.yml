@@ -8,16 +8,17 @@ on:
 
 env:
   RUBY_VERSION: 2.7.6
+  NODE_VERSION: 16
 
 jobs:
   lint-report:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
+    runs-on: ubuntu-24.04
+    steps: 
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
-      - uses: actions/setup-node@master
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
