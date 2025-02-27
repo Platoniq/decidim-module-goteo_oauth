@@ -5,8 +5,7 @@ require "spec_helper"
 describe OmniAuth::Strategies::Goteo do
   subject do
     described_class.new({}, "appid", "secret", **options).tap do |strategy|
-      allow(strategy).to receive(:request).and_return(request)
-      allow(strategy).to receive(:session).and_return([])
+      allow(strategy).to receive_messages(request:, session: [])
     end
   end
 
@@ -123,16 +122,18 @@ describe OmniAuth::Strategies::Goteo do
   describe "build_access_token" do
     let(:gt_params) { [nil, { client_id: "appid", code_verifier: nil, redirect_uri: "/users/auth/goteo/callback" }, {}] }
 
+    # rubocop: disable RSpec/NoExpectationExample
     it "creates the access token" do
-      auth_code = instance_double(::OAuth2::Strategy::AuthCode)
+      auth_code = instance_double(OAuth2::Strategy::AuthCode)
       access_token = instance_double(OAuth2::AccessToken)
       allow(auth_code).to receive(:get_token).with(*gt_params).and_return(access_token)
       # rubocop: disable RSpec/AnyInstance
-      allow_any_instance_of(::OAuth2::Client).to receive(:auth_code).and_return(auth_code)
+      allow_any_instance_of(OAuth2::Client).to receive(:auth_code).and_return(auth_code)
       # rubocop: enable RSpec/AnyInstance
 
       subject.build_access_token
     end
+    # rubocop: enable RSpec/NoExpectationExample
   end
 
   describe "raw_info" do

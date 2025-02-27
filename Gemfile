@@ -16,7 +16,7 @@ gem "decidim", DECIDIM_VERSION
 gem "decidim-goteo_oauth", path: "."
 
 gem "bootsnap", "~> 1.7"
-gem "faker", "~> 2.14"
+gem "faker", "~> 3.2"
 gem "rspec", "~> 3.0"
 
 group :development, :test do

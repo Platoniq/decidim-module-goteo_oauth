@@ -14,8 +14,7 @@ Gem::Specification.new do |spec|
   spec.description = "A module for Decidim that enables Oauth login with Goteo."
   spec.license = "AGPL-3.0"
   spec.homepage = "https://github.com/Platoniq/decidim-module-goteo_oauth"
-  spec.required_ruby_version = ">= 3.0.2"
-  spec.add_dependency "concurrent-ruby", "= 1.3.4"
+  spec.required_ruby_version = ">= 3.1"
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
