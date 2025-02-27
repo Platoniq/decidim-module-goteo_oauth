@@ -12,7 +12,7 @@ env:
 
 jobs:
   test-report:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     services:
       postgres:
@@ -49,7 +49,7 @@ jobs:
           SIMPLECOV: 1
           CODECOV: 1
 
-      - uses: actions/upload-artifact@v2-preview
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: screenshots
