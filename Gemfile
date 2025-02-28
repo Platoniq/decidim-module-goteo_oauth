@@ -35,5 +35,6 @@ group :development do
 end
 
 group :test do
-  gem "codecov", require: false
+  gem "coveralls_reborn", require: false
 end
+
