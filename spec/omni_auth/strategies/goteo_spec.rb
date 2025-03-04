@@ -10,7 +10,7 @@ describe OmniAuth::Strategies::Goteo do
   end
 
   before do
-    stub_request(:post, "https://oauth-live.deploy.goteo.org/token?client_id=appid&response_type=code")
+    stub_request(:post, "https://oauth-live.deploy.goteo.org/:locale/token?client_id=appid&response_type=code")
       .with(
         body: { "client_id" => "appid", "code" => nil, "code_verifier" => nil, "foo" => "bar",
                 "grant_type" => "authorization_code", "redirect_uri" => "/users/auth/goteo/callback" },
@@ -57,7 +57,7 @@ describe OmniAuth::Strategies::Goteo do
     end
 
     it "has correct token url" do
-      expect(subject.options.client_options.token_url).to eq("https://oauth-live.deploy.goteo.org/token")
+      expect(subject.options.client_options.token_url).to eq("https://oauth-live.deploy.goteo.org/:locale/token")
     end
 
     it "has correct authorization_code" do
@@ -110,7 +110,7 @@ describe OmniAuth::Strategies::Goteo do
       it { expect(subject.opts[option]).to eq(subject.options.client_options.send(option)) }
     end
 
-    it { expect(subject.opts[:token_url]).to eq("https://oauth-live.deploy.goteo.org/token?client_id=appid&response_type=code") }
+    it { expect(subject.opts[:token_url]).to eq("https://oauth-live.deploy.goteo.org/:locale/token?client_id=appid&response_type=code") }
   end
 
   describe "verifier" do
