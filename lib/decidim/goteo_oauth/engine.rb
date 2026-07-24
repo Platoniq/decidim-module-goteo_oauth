@@ -7,9 +7,10 @@ module Decidim
 
       # Goteo configuration
       initializer "decidim.goteo_oauth.middleware" do |app|
-        omniauth_config = Rails.application.secrets[:omniauth]
+        secrets_path = Rails.root.join("config/secrets.yml")
+        omniauth_config = secrets_path.exist? ? Rails.application.config_for(:secrets)[:omniauth] : nil
 
-        if omniauth_config[:goteo].present?
+        if omniauth_config&.dig(:goteo).present?
           app.config.middleware.use OmniAuth::Builder do
             provider(
               :goteo,
