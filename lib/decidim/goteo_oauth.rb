@@ -5,20 +5,21 @@ require "omniauth/strategies/goteo"
 
 module Decidim
   module GoteoOauth
-    include ActiveSupport::Configurable
+    class << self
+      def config = self
 
-    config_accessor :oauth_scope do
-      :email
+      def configure
+        yield self
+      end
     end
 
-    config_accessor :oauth_client_options do
-      {
-        site: "https://oauth-live.deploy.goteo.org/",
-        authorize_url: "https://oauth-live.deploy.goteo.org/:locale/authorize",
-        user_info_url: "https://oauth-live.deploy.goteo.org/userInfo",
-        token_url: "https://oauth-live.deploy.goteo.org/:locale/token",
-        response_type: "authorization_code"
-      }
-    end
+    mattr_accessor :oauth_scope, default: :email
+    mattr_accessor :oauth_client_options, default: {
+      site: "https://oauth-live.deploy.goteo.org/",
+      authorize_url: "https://oauth-live.deploy.goteo.org/:locale/authorize",
+      user_info_url: "https://oauth-live.deploy.goteo.org/userInfo",
+      token_url: "https://oauth-live.deploy.goteo.org/:locale/token",
+      response_type: "authorization_code"
+    }
   end
 end

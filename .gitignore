@@ -6,6 +6,13 @@
 /pkg/
 /spec/reports/
 /spec/examples.txt
+.rspec-failures
+
+# default test application
+spec/decidim_dummy_app
+
+# default development application
+development_app
 /test/tmp/
 /test/version_tmp/
 /tmp/
