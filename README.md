@@ -32,18 +32,15 @@ After this step is finished, you need proceed to configuration.
 
 ## Configuration
 
-Add to your `config/secrets.yml` the Goteo APP oauth keys
-```yaml
-development:
-  <<: *default
-  omniauth:
-    goteo:
-      enabled: true
-      app_id: # 
-      app_secret: # 
-    # Other provider configs 
-  # Other Yaml configs like secret_key_base   
+Set the Goteo APP OAuth keys as environment variables:
+
+```bash
+OMNIAUTH_GOTEO_APP_ID=...
+OMNIAUTH_GOTEO_APP_SECRET=...
 ```
+
+The provider is enabled when `OMNIAUTH_GOTEO_APP_ID` is present. You can also
+set `Decidim.omniauth_providers[:goteo]` yourself in an initializer.
 
 ### Addtional configuration
 You can further customise the installation by providing 2 additional key settings, that you could add to your `config/initializers/decidim.rb` or
