@@ -5,7 +5,7 @@ require "spec_helper"
 describe OmniAuth::Strategies::Goteo do
   subject do
     described_class.new({}, "appid", "secret", **options).tap do |strategy|
-      allow(strategy).to receive_messages(request:, session: [])
+      allow(strategy).to receive_messages(request:, session: {})
     end
   end
 
