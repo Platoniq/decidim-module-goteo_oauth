@@ -14,6 +14,7 @@ DECIDIM_VERSION = Decidim::GoteoOauth::DECIDIM_VERSION
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-goteo_oauth", path: "."
+gem "decidim-initiatives", DECIDIM_VERSION
 
 gem "bootsnap", "~> 1.7"
 gem "faker", "~> 3.2"

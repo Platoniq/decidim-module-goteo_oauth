@@ -7,8 +7,10 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.2.6
-  NODE_VERSION: 18.17.1
+  RUBY_VERSION: 3.4.13
+  # Ruby 3.4.13 refuses to cache compiled code while coverage runs; the dummy app turns the bootsnap iseq cache off when SIMPLECOV is set
+  SIMPLECOV: "true"
+  NODE_VERSION: 22.14.0
 
 jobs:
   test-report:
@@ -34,6 +36,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install libvips
+        run: sudo apt-get update && sudo apt-get install -y libvips42
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
